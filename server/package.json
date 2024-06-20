@@ -4,6 +4,7 @@
   "description": "A simple API that returns Chuck Norris facts using GraphQL",
   "main": "dist/index.js",
   "scripts": {
+    "dev": "nodemon --exec ts-node src/index.ts",
     "start": "tsc && node dist/index.js",
     "build": "tsc",
     "test": "jest"
@@ -11,6 +12,8 @@
   "author": "Matheus Foscarini Dias",
   "license": "ISC",
   "devDependencies": {
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
     "typescript": "^5.5.2"
   },
   "dependencies": {
