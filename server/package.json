@@ -1,0 +1,21 @@
+{
+  "name": "chuck-norris-facts-api",
+  "version": "1.0.0",
+  "description": "A simple API that returns Chuck Norris facts using GraphQL",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "tsc && node dist/index.js",
+    "build": "tsc",
+    "test": "jest"
+  },
+  "author": "Matheus Foscarini Dias",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.5.2"
+  },
+  "dependencies": {
+    "apollo-server": "^3.13.0",
+    "axios": "^1.7.2",
+    "graphql": "^16.8.2"
+  }
+}
