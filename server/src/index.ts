@@ -1,5 +1,10 @@
+// npm install @apollo/server express graphql
 import { ApolloServer } from '@apollo/server';
-import { startStandaloneServer } from '@apollo/server/standalone';
+import { expressMiddleware } from '@apollo/server/express4';
+import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
+
+import express from 'express';
+import http from 'http';
 
 import resolvers from './resolvers/index';
 import typeDefs from './schemas';
@@ -7,18 +12,27 @@ import typeDefs from './schemas';
 import 'dotenv/config'
 
 const startServer = async () => {
+  const app = express();
+  const httpServer = http.createServer(app);
+
   const server = new ApolloServer({
-    resolvers,
     typeDefs,
+    resolvers,
+    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
   });
+  await server.start();
 
-  // Passing the server to the startStandaloneServer function will 
-  // create an Express server under the hood and add the server as a middleware.
-  const { url } = await startStandaloneServer(server, {
-    listen: { port: 4000 },
-  });
+  app.use(
+    '/',
+    express.json(),
+    expressMiddleware(server, {
+      context: async ({ req }) => ({ token: req.headers.token }),
+    }),
+  );
 
-  console.log(`🚀 Server ready at: ${url}`);
+
+  await new Promise<void>((resolve) => httpServer.listen({ port: 4000 }, resolve));
+  console.log(`🚀 Server ready at http://localhost:4000/`);
 }
 
 startServer();
