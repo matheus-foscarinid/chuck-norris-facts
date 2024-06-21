@@ -3,6 +3,7 @@ import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
 
+import cors from 'cors';
 import express from 'express';
 import http from 'http';
 
@@ -24,6 +25,7 @@ const startServer = async () => {
 
   app.use(
     '/',
+    cors<cors.CorsRequest>(),
     express.json(),
     expressMiddleware(server, {
       context: async ({ req }) => ({ token: req.headers.token }),
