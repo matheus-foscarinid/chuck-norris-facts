@@ -20,6 +20,16 @@ export default function Home() {
 
           <JokeCategorySelector/>
           <JokeDisplay />
+
+          <a
+            href="https://github.com/matheus-foscarinid/chuck-norris-facts"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:underline absolute bottom-8"
+          >
+            View the source code on GitHub
+          </a>
+
         </ApolloProvider>
       </JokeInfosContextProvider>
     </main>
