@@ -45,7 +45,7 @@ const JokeDisplay = () => {
   if (error) return <p className="text-red-500">Error :(</p>;
 
   return (
-    <div className="flex flex-col items-center justify-center p-4 w-full bg-white rounded-lg shadow-md">
+    <div className="flex flex-col items-center justify-center p-4 w-full bg-white rounded-lg shadow-md mx-auto max-w-screen-md">
       <div className='flex items-center justify-center min-h-24'>
         <p className="text-lg text-gray-800 text-center italic">
           {!joke
