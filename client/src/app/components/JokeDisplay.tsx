@@ -15,7 +15,7 @@ const JokeDisplay = () => {
   const { jokeInfos } = useJokeInfosContext();
   const [joke, setJoke] = useState('');
 
-  const { error, loading, refetch } = useQuery(GET_JOKE_QUERY, {
+  const { error, refetch } = useQuery(GET_JOKE_QUERY, {
     variables: jokeInfos.selectedCategory ? { category: jokeInfos.selectedCategory } : {},
     onCompleted: (data) => {
       setJoke(data.randomJoke.value);
@@ -41,13 +41,17 @@ const JokeDisplay = () => {
     setJoke(data.randomJoke.value);
   };
 
+  // Rendering error message if there's an error fetching joke
   if (error) return <p className="text-red-500">Error :(</p>;
 
   return (
     <div className="flex flex-col items-center justify-center p-4 w-full bg-white rounded-lg shadow-md">
       <div className='flex items-center justify-center min-h-24'>
         <p className="text-lg text-gray-800 text-center italic">
-          {!joke ? 'Loading...' : `"${joke}"`}
+          {!joke
+            ? <span className="text-gray-500">Loading... It may take some time for the API to boot...</span>
+            : `"${joke}"`
+          }
         </p>
       </div>
 
