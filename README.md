@@ -1,6 +1,6 @@
 # Chuck Norris Facts Explorer! 🚀
 
-Discover funny facts about Chuck Norriswith the Chuck Norris Facts Explorer. Built with modern technologies, you can view it live in action [here](https://matheus-foscarinid-cn-facts.vercel.app/).
+Discover funny facts about Chuck Norris with the Chuck Norris Facts Explorer. Built with modern technologies, you can view it live in 👉 [here](https://matheus-foscarinid-cn-facts.vercel.app/).
 
 ## Features
 
